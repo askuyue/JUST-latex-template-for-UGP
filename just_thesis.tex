@@ -1,0 +1,146 @@
+\documentclass[
+	% Basic information
+	StudentName     = 杨晓宇,
+	StudentID       = 1922105012,
+	AdvisorName     = 王俊,
+	%Grade           = 年级,
+	Major           = 信息与计算科学,
+	Department      = 理学院,
+	% Submit time
+	SubmitYear		= 2023,
+	SubmitMonth		= 6,
+	% Title
+	Title           = 加速割平面法的技巧探究,
+	TitleEng        = {{Accelerate the exploration of the techniques of the cut plane method}}
+]{just_thesis}
+%% 以上需要学生把自己的信息填上去的
+
+% 导入页面命令
+\newcommand{\inputpage}[1]{
+	\input{settings/#1}
+}
+
+
+
+\begin{document}
+	\inputpage{cover}
+	
+	%%%% 摘要
+	\newpage
+	\setcounter{page}{1}
+	\pagenumbering{Roman}
+	\setlength{\headsep}{1.224cm}
+	\begin{center}
+		\zihao{3}\fakehei 摘\quad 要
+	\end{center}
+	\vspace{21pt}
+	\zihao{-4}
+	
+	
+	\setlength{\baselineskip}{20pt}
+% ---------------中文摘要----------------------
+	整数规划（Integer Programming , IP）是带整数变量的最优化问题。最大化或最小化全部变量或者部分变量为整数的多元函数受约束于一组等式和不等式条件的最优化问题。整数规划的提出最早可以追溯到上世纪五十年代。近年来，运筹学在日常生活中的应用越来越多，整数规划在工业方面、商业方面、运输方面和经济管理和军事方面都有着重要的应用。我们对于整数规划问题主要的求解方法，目前来说主要是有割平面法和分支定界法。
+本文主要阐述了线性规划、整数规划的理论基础，给出了分支定界法与割平面法的具体解题步骤与两种方法的相同点与不同点。之后主要研究如何优化割平面法，并且应用于若干个整数规划实例中，从而达到优化割平面法求解整数规划问题的目的。将整数规划应用于实际生活中解决问题，进一步完善与优化整数规划割平面法。
+% ---------------中文摘要----------------------
+	\newline
+	\newline
+	\indent\zihao{-4}{\bfseries 关键词：}\zihao{-4} 线性规划；整数规划；分支定界法；割平面法
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	\newpage
+	\setlength{\headsep}{1.224cm}
+	\begin{center}
+		\zihao{3} \textbf{Abstract} 
+	\end{center}
+	\vspace{21pt}
+	\zihao{-4}
+% ------------------English Abstract--------------------------
+	Integer programming is an optimization problem with integer variables, which maximize or minimize the multiple functions of full or partial variables for integer, subject to a set of equality and inequality constraint optimization problems. The introduction of integer programming can be traced back to the fifties of the last century. In recent years, operations research has been used more and more in daily life, and integer programming has important applications in industry, commerce, transportation, and economic management and military. Our main solution methods for integer programming problems are currently mainly the secant plane method and the branch delimitation method.
+This paper mainly expounds the theoretical basis of linear programming and integer programming, and gives the specific problem-solving steps of branching delimitation method and the secant plane method, and the similarities and differences between the two methods. After that, he mainly studied how to optimize the cut plane method, and applied it to several integer programming examples, so as to achieve the purpose of optimizing the cut plane method to solve integer programming problems. Integer programming is applied to solve problems in real life, and the cut plane method of integer programming is further improved and optimized.
+% ------------------English Abstract--------------------------
+	\newline
+	\newline
+	\indent\zihao{-4}\textbf{Key Words: }\zihao{-4}\songti Linear programming; integer programming; branch delimitation method; Cut plane method
+	
+	%%%% 目录
+	\newpage
+	\setlength{\headsep}{-0.3cm}
+	% 去除页码
+	\pagenumbering{gobble}
+	\tableofcontents
+	\clearpage	% 去除页码命令终止
+	\setcounter{page}{1}
+	\pagenumbering{arabic}
+
+	\setlength{\headsep}{0.624cm}
+	\fancypagestyle{plain}{
+		\pagestyle{fancy}
+	}%在章节页也显示页眉
+	\pagestyle{fancy}
+	\setlength{\baselineskip}{20pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+	% 第一章绪论
+	\include{./chapters/chap0XunLun.tex}
+	
+	% 第二章主要结论
+	\include{./chapters/chap1MainResults.tex}
+
+	% 第二章主要结论
+	\include{./chapters/chap2NumExps.tex}
+	
+	% 第二章主要结论
+	\include{./chapters/chap3Conclusions.tex}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% -----------使用bib文件储存参考文献信息------------
+ % {\centering \bibliography{just_refs.bib}}
+%	\addcontentsline{toc}{chapter}{参考文献}%将“参考文献加入目录中”
+%	\bibliographystyle{gbt7714-2005-numerical}
+
+%% 参考文献也可以采用另外一种方式：
+{\centering 
+\addcontentsline{toc}{chapter}{参考文献}%将“参考文献加入目录中”
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem{yangchang2014integer}
+杨明歌，常水珍.
+\newblock 求解整数规划的割平面法的研究\allowbreak[J].
+\newblock 洛阳师范学院学报, 2014, 33\allowbreak (05): 201-213.
+\newblock DOI:  \url{10.16594/j.cnki.41-1302/g4.2014.05.001}.
+
+\bibitem{ywy2022}
+殷允强，王杜鹃，余玉刚 主编.
+\newblock 整数规划：基础、扩展及应用\allowbreak[M].
+\newblock 北京: 科学出版社, 2022.
+
+\bibitem{bian2012smooth}
+Wei Bian, Xiaojun Chen.
+\newblock Smoothing Neural Network for Constrained Non-Lipschitz Optimization With Applications\allowbreak[J].
+\newblock IEEE Transaction on Neural Networks and Learning Systems, 2012, 23\allowbreak (04): 399-411.
+\newblock DOI:  \url{ 10.1109/TNNLS.2011.2181867}.
+
+
+\end{thebibliography}}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{plain}
+	
+%------------致谢-------------
+	\include{./chapters/chap4Thanks.tex}
+
+  % ----------创见性声明-----------
+	\include{./chapters/chap5CreativeStatement.tex}
+
+\end{document}

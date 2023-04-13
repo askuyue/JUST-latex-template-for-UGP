@@ -1,0 +1,25 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[杨明歌，常水珍(2014)]{yangchang2014integer}
+杨明歌，常水珍.
+\newblock 求解整数规划的割平面法的研究\allowbreak[J/OL].
+\newblock 洛阳师范学院学报, 2014, 33\allowbreak (05): 201-213.
+\newblock \url{DOI: 10.16594/j.cnki.41-1302/g4.2014.05.001}.
+
+\bibitem[殷允强，王杜鹃，余玉刚，主编(2022)]{ywy2022}
+殷允强，王杜鹃，余玉刚，主编.
+\newblock 整数规划：基础、扩展及应用\allowbreak[M].
+\newblock 北京: 科学出版社, 2022.
+
+\end{thebibliography}
