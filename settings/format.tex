@@ -1,0 +1,51 @@
+%%%% 导入文件
+\newcommand{\inputfiles}[1]{
+    \input{settings/#1}
+}
+\inputfiles{packages}
+\inputfiles{fonts}
+\inputfiles{contents}
+
+%%%% 颜色
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+%%%% 图需要中英文标注
+\captionsetup[figure]{font={normalsize,rm},name={图},labelsep=quad} %设置图标题标号后面有一个空格
+\captionsetup[subfigure]{font={normalsize,rm},name={图},labelsep=quad} %设置图标题标号后面有一个空格
+\captionsetup[figure][bi-second]{name=Figure}   %设置英文图开头为Figure
+
+
+% 表需要中英文标注
+\captionsetup[table][bi-first]{name=表}
+\captionsetup[table][bi-second]{name=Table}
+\captionsetup[table]{labelsep=space}
+
+%-----------基本页面设置------------------
+\setlength{\baselineskip}{20pt}
+\setlength{\topmargin}{-0.94cm}  %页眉高度1.5cm-1in
+\setlength{\footskip}{0.5552cm}  %页角高度1.75: 下边距2.5-0.0376*10.5-1.75
+\pagestyle{empty}
+\chead{\zihao{5}江苏科技大学本科毕业设计（论文）}% 使用rhead 定义右侧上方页眉
+\rhead{~}% 设置左侧页眉为空
+\lhead{~}% 设置右侧页眉为空
+\cfoot{\thepage}% 设定页脚为页码
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headsep}{0.624cm}
+
+
+%%%%%%%%%%%%%%%%
+\numberwithin{equation}{chapter}
+\theoremstyle{plain}
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{corollary}{结论}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{remark}{注释}[chapter]
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{assumption}{假设}[chapter]
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\sign}{sign}
