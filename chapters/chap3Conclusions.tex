@@ -1,0 +1,42 @@
+	{\centering\chapter{结论}}
+	
+	由研究课题题目假设，最终单纯形表中基变量，也就是b，改为整数与真分数相加的形式，比较大小，更大的其收敛条件更强，这是书本上的话，但课题第一次单纯形法计算出的b的真分数部分相等，于是再次假设如果具有两个或两个以上的真分数相等，则将单纯形表表示为Gomory收敛条件的形式，右式真分数不变，此时各式中它们是相等的，分别将左式中的系数相加，所得的数字取绝对值，转换成整数与真分数相加的形式，将各式真分数进行比较，大的其收敛条件更强。为探究此假设成立的非偶然性，随机选取了上面例题，我们的假设仍旧成立，由此达成优化割平面法解决整数规划问题的目的。所以在使用割平面法求解整数规划问题的时候，我们就可以使用此优化方法来减轻计算负担。
+	
+综上所述，本论文主要探讨了对于割平面的优化改进方法，首先就是我们经常用的，在使用割平面求解整数规划问题时，选取非整数解变量中分数部分最大的一个基变量，然后取其相应行来构造割平面，然后放入原来的线性规划问题中，继续使用单纯形法求解最优解问题，我们也证明了其正确性，并且给出了影响最优解的因素。而我们在求解过程中，也会遇到一些特殊情况，比如当非整数解变量中分数部分最大的基变量有两个或者两个以上的时候，我们就要对于这几行的非基变量分别相加，取它们的真分数部分，并进行比较，从中选取最大真分数行来作为割平面，它是切割条件较强的Gomory约束，从而来减少割平面的切割次数和运算计算量，更快的找到最优解。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{algorithm}[th!]
+\SetAlgoLined
+	\caption{Alternating Direction Method of Multipliers  for the $\ell_{1}/\ell_{\infty}$ minimization   ({\tt ADMM}$_{\ell_{1}/\ell_{\infty}}$)}
+	\label{ADMML1inf}
+	\KwIn{ The initial points: $\mathbf{y}^{0} =\mathbf{z}^{0} \in \mathbb{R}^{n}$, the relative error $\varepsilon = 10^{-8}$, {\tt IterMax} $=100n$, $\lambda = 10^{-4} $ and $\beta  =L_0 =  2\lambda_{\max} \left( \mathbf{A}^{\top} \mathbf{A} \right) $.}
+ 
+	\While{ $k < ${\tt  IterMax}  or $ \frac{\Vert \mathbf{x}^{k} - \mathbf{x}^{k-1} \Vert_2}{ \Vert \mathbf{x}^{k} \Vert_2} >\varepsilon$}{
+ 		\begin{itemize}
+ 		\item[(1)] Compute 
+			\[
+			 \mathbf{v}^{k} = \mathbf{y}^{k} -  \frac{\mathbf{z}^{k}}{\beta},
+			 \]
+		if $\beta  < \lambda \max \left\{ 	\frac{\Vert \mathbf{v}^{k} \Vert_{0} - \vert \mathcal{I}_{\max}\left( \mathbf{v}^{k} \right) \vert}{ \Vert \mathbf{v}^{k} \Vert_{1}\Vert \mathbf{v}^{k} \Vert_{\infty} } , \frac{1}{\Vert \mathbf{v}^{k} \Vert_{\infty}^{2} } \right\}$ then
+		\[
+					\beta  = L_0  + \lambda  \max \left\{ 	\frac{\Vert \mathbf{v}^{k} \Vert_{0} - \vert \mathcal{I}_{\max}\left( \mathbf{v}^{k} \right) \vert}{ \Vert \mathbf{v}^{k} \Vert_{1}\Vert \mathbf{v}^{k} \Vert_{\infty} } , \frac{1}{\Vert \mathbf{v}^{k} \Vert_{\infty}^{2} } \right\},
+		\]
+		else $\beta  = L_0$ end.
+	\item[(2)] Calculate $\mathbf{x}^{ k+1}, \mathbf{y}^{ k+1}$ and the dual variable $\mathbf{z}^{ k+1}$ via
+			\[
+			\begin{cases}
+		 \mathbf{x}^{ k+1} &= \sign\left( \mathbf{v}^{k} \right) \odot \max \left\{  \left\vert \mathbf{v}^{k} \right\vert -\frac{\lambda}{\beta \Vert \mathbf{v}^{k} \Vert_{\infty} } , 0\right\} ,\\
+		 \mathbf{y}^{ k+1} &=  \left(  \mathbf{ I}_{n}  - \frac{1}{\beta } \mathbf{A}^{\top}  \left( \mathbf{I}_m  + \frac{1}{\beta } \mathbf{A}\mathbf{A}^{\top}\right)^{-1}  \mathbf{A}\right)  \left( \frac{\mathbf{A}^{\top} \mathbf{b}}{\beta } + \frac{\mathbf{z}^{k}}{\beta } + \mathbf{x}^{k+1} \right),\\
+		\mathbf{z}^{ k+1} &=  \mathbf{z}^{ k} + \beta \left( \mathbf{x}^{ k+1} - \mathbf{y}^{ k+1} \right)  .
+	 \end{cases}
+	  \]  
+	  and update again
+	  \[
+	  		 \mathbf{x}^{ k+1}_{i} = \mathbf{v}^{k}_{i},~i \in   \mathcal{I}_{\max}\left( \mathbf{v}^{k} \right)
+	  \]
+		\item[(3)] Update $k = k +1.$
+	  \end{itemize}
+	}
+ \KwOut{ Finally solution $\mathbf{x}^{ k+1}$.}
+\end{algorithm}
